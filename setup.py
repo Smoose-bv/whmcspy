@@ -15,6 +15,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     license='GPL-3',
+    keywords='whmcs api library',
     packages=find_packages(),
     install_requires=[
         'requests >= 2.21.0',
