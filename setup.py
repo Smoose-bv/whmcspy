@@ -1,14 +1,27 @@
 from setuptools import find_packages
 from setuptools import setup
 
+
+with open('README.md', 'r') as readme:
+    long_description = readme.read()
+
+
 setup(
     name='whmcspy',
     version='0.1.0',
     author='Smoose BV',
     description='Python interface to the WHMCS API.',
+    url='https://github.com/Smoose-bv/whmcspy',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     license='GPL-3',
     packages=find_packages(),
     install_requires=[
         'requests >= 2.21.0',
-    ]
+    ],
+    classifiers=[
+        'Programming Language :: Python :: 3',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+        'Operating System :: OS Independent',
+    ],
 )
