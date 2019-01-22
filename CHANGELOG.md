@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
+### Fixed
+- Syntax errors
 
 ## [0.1.0] - 2019-01-21
 ### Added
