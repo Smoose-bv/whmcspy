@@ -8,7 +8,7 @@ with open('README.md', 'r') as readme:
 
 setup(
     name='whmcspy',
-    version='0.1.0',
+    version='0.1.1',
     author='Smoose BV',
     description='Python interface to the WHMCS API.',
     url='https://github.com/Smoose-bv/whmcspy',
