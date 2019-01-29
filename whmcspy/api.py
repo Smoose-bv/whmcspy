@@ -139,7 +139,7 @@ class WHMCS:
             **params)
         return response
 
-    def get_domains(
+    def get_clients_domains(
             self,
             active=None,
             offset=0):
@@ -167,7 +167,7 @@ class WHMCS:
                 yield domain
             offset += response['numreturned']
 
-    def get_client_products(
+    def get_clients_products(
             self,
             active=None,
             offset=0,

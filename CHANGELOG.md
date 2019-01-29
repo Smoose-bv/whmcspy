@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
+### Changed
+- Renamed `get_domains` to `get_clients_domains`
+- Renamed `get_client_products` to `get_clients_products`
 
 ## [0.1.2] - 2019-01-29
 ### Fixed
