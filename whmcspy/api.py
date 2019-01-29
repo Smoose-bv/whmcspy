@@ -170,7 +170,6 @@ class WHMCS:
     def get_client_products(
             self,
             active=None,
-            domain=None,
             offset=0,
             productid=None,
             **params):
