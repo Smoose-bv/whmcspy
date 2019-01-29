@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning].
 ### Changed
 - Renamed `get_domains` to `get_clients_domains`
 - Renamed `get_client_products` to `get_clients_products`
+- Accept params for `get_clients_domains`
 
 ## [0.1.2] - 2019-01-29
 ### Fixed

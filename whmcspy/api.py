@@ -142,9 +142,13 @@ class WHMCS:
     def get_clients_domains(
             self,
             active=None,
-            offset=0):
+            offset=0,
+            **params):
         """
         Get domains (registrations).
+
+        Args:
+            **kwargs: Arbitrary parameters.
 
         Keyword Args:
             active (bool): Filter on active or inactive domains.
@@ -155,9 +159,12 @@ class WHMCS:
 
         """
         while True:
+            params.update(
+                limitstart=offset,
+            )
             response = self.call(
                 'GetClientsDomains',
-                limitstart=offset)
+                **params)
             if not response['numreturned']:
                 break
             for domain in response['domains']['domain']:
