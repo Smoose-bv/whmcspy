@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
+### Added
+- UpdateClientDomain call
 
 ## [0.1.3] - 2019-01-29
 ### Changed

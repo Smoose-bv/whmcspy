@@ -210,6 +210,48 @@ class WHMCS:
                 yield product
             offset += response['numreturned']
 
+    def update_client_domain(
+            self,
+            domain,
+            **params):
+        """
+        Update a client's domain registration.
+
+        Args:
+            domain (dict): The domain to update.
+            **params: Additional params.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/updateclientdomain/
+
+        """
+        params.update(
+            domainid=domain['id'],
+            dnsmanagement=domain['dnsmanagement'],
+            emailforwarding=domain['emailforwarding'],
+            idprotection=domain['idprotection'],
+            donotrenew=domain['donotrenew'],
+            type=domain['regtype'],
+            regdate=domain['regdate'],
+            nextduedate=domain['nextduedate'],
+            expirydate=domain['expirydate'],
+            domain=domain['domainname'],
+            firstpaymentamount=domain['firstpaymentamount'],
+            recurringamount=domain['recurringamount'],
+            registrar=domain['registrar'],
+            regperiod=domain['regperiod'],
+            paymentmethod=domain['paymentmethodname'],
+            subscriptionid=domain['subscriptionid'],
+            status=domain['status'],
+            notes=domain['notes'],
+            promoid=domain['promoid'],
+        )
+        response = self.call(
+            'UpdateClientDomain',
+            **params)
+        return response
+
     def update_client_product(
             self,
             productid,
