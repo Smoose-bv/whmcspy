@@ -33,11 +33,12 @@ class WHMCS:
         """
         Call the WHMCS api.
 
+        This is an abstract way to call the WHMCS API. Basically only the
+        action and additional params are required to make a call.
+
         Args:
             action (str): The action to perform.
-
-        Keyword Args:
-            params: The parameters to include in the call.
+            **params: Additional params.
 
         Returns:
             dict: The result of the call.
@@ -85,7 +86,11 @@ class WHMCS:
 
         Args:
             order_id (int): The id of the order to accept.
-            **kwargs: Arbitrary parameters.
+            **params: Additional params.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/acceptorder/
 
         """
         params.update(
@@ -108,7 +113,7 @@ class WHMCS:
 
         Args:
             clientid (int): The id of the client whom the order is for.
-            **kwargs: Arbitrary parameters.
+            **params: Additional params.
 
         Keyword Args:
             domains (list): A list of domains to include in the order.
@@ -118,6 +123,10 @@ class WHMCS:
 
         Returns:
             The response of the successfully created order.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/addorder/
 
         """
         params.update(
@@ -148,7 +157,7 @@ class WHMCS:
         Get domains (registrations).
 
         Args:
-            **kwargs: Arbitrary parameters.
+            **params: Additional params.
 
         Keyword Args:
             active (bool): Filter on active or inactive domains.
@@ -156,6 +165,10 @@ class WHMCS:
 
         Yields:
             The domains.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/getclientsdomains/
 
         """
         while True:
@@ -183,6 +196,10 @@ class WHMCS:
         """
         Get client products.
 
+
+        Args:
+            **params: Additional params.
+
         Keyword Args:
             active (bool): Filter on active or inactive domains.
             offset (int): How many items to skip.
@@ -190,6 +207,10 @@ class WHMCS:
 
         Yields:
             The products.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/getclientsproducts/
 
         """
         while True:
@@ -261,9 +282,11 @@ class WHMCS:
 
         Args:
             productid (int): The id of the client product.
+            **params: Additional params.
 
-        Keyword Args:
-            Passed as params to the API.
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/updateclientproduct/
 
         """
         params.update(
