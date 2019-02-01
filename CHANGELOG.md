@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
+### Changed
+- Removed `offset` param for paginated calls, use `limitstart` instead.
 
 ## [0.1.4] - 2019-01-31
 ### Added

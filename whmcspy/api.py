@@ -67,6 +67,38 @@ class WHMCS:
             raise exceptions.Error(response_['message'])
         return response_
 
+    def paginated_call(
+            self,
+            action,
+            limitstart=0,
+            **params):
+        """
+        Perform a WHMCS API call, but paginated.
+
+        Instead of returning just a single result a result is yielded for
+        every iteration until an empty result returns from WHMCS.
+        See :func:`call` for common params.
+
+        Keyword Args:
+            limitstart (int): The offset from which to start. Initially this
+                is 0.
+
+        Yields:
+            An API response.
+
+        """
+        while True:
+            params.update(
+                limitstart=limitstart,
+            )
+            response = self.call(
+                action,
+                **params)
+            if not response['numreturned']:
+                break
+            limitstart += response['numreturned']
+            yield response
+
     def get_tld_pricing(self):
         """
         Get the TLD pricing.
@@ -151,7 +183,6 @@ class WHMCS:
     def get_clients_domains(
             self,
             active=None,
-            offset=0,
             **params):
         """
         Get domains (registrations).
@@ -161,7 +192,6 @@ class WHMCS:
 
         Keyword Args:
             active (bool): Filter on active or inactive domains.
-            offset (int): How many items to skip.
 
         Yields:
             The domains.
@@ -171,26 +201,18 @@ class WHMCS:
             https://developers.whmcs.com/api-reference/getclientsdomains/
 
         """
-        while True:
-            params.update(
-                limitstart=offset,
-            )
-            response = self.call(
+        for response in self.paginated_call(
                 'GetClientsDomains',
-                **params)
-            if not response['numreturned']:
-                break
+                **params):
             for domain in response['domains']['domain']:
                 if (active is True and domain['status'] != 'Active'
                         or active is False and domain['status'] == 'Active'):
                     continue
                 yield domain
-            offset += response['numreturned']
 
     def get_clients_products(
             self,
             active=None,
-            offset=0,
             productid=None,
             **params):
         """
@@ -202,7 +224,6 @@ class WHMCS:
 
         Keyword Args:
             active (bool): Filter on active or inactive domains.
-            offset (int): How many items to skip.
             productid (int): Only get products with this product id.
 
         Yields:
@@ -213,23 +234,16 @@ class WHMCS:
             https://developers.whmcs.com/api-reference/getclientsproducts/
 
         """
-        while True:
-            params.update(
-                limitstart=offset,
-            )
-            if productid:
-                params['pid'] = productid
-            response = self.call(
+        if productid:
+            params['pid'] = productid
+        for response in self.paginated_call(
                 'GetClientsProducts',
-                **params)
-            if not response['numreturned']:
-                break
+                **params):
             for product in response['products']['product']:
                 if (active is True and product['status'] != 'Active'
                         or active is False and product['status'] == 'Active'):
                     continue
                 yield product
-            offset += response['numreturned']
 
     def update_client_domain(
             self,
