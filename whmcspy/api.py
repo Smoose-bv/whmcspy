@@ -3,6 +3,28 @@ import requests
 from whmcspy import exceptions
 
 
+def _is_inactive(obj, active):
+    """
+    Check if the object is considered inactive.
+
+    This method is useful in filtering objects based on their state.
+
+    Args:
+        obj (dict): The WHMCS object to check.
+        active (bool): The active state to check. If set to True the
+            status should be Active, if set to False the status should not be
+            Active. If set to None no check occurs and all is not considered
+            inactive.
+
+    Returns:
+        True if the object is considered active.
+
+    """
+    return (
+        active is True and obj['status'] != 'Active'
+        or active is False and obj['status'] == 'Active')
+
+
 class WHMCS:
     """
     WHMCS interface.
@@ -205,8 +227,7 @@ class WHMCS:
                 'GetClientsDomains',
                 **params):
             for domain in response['domains']['domain']:
-                if (active is True and domain['status'] != 'Active'
-                        or active is False and domain['status'] == 'Active'):
+                if _is_inactive(domain, active):
                     continue
                 yield domain
 
@@ -240,8 +261,7 @@ class WHMCS:
                 'GetClientsProducts',
                 **params):
             for product in response['products']['product']:
-                if (active is True and product['status'] != 'Active'
-                        or active is False and product['status'] == 'Active'):
+                if _is_inactive(product, active):
                     continue
                 yield product
 
