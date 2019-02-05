@@ -386,6 +386,24 @@ class WHMCS:
             'OpenTicket',
             **params)
 
+    def send_email(
+            self,
+            **params):
+        """
+        Send a client email notification.
+
+        Args:
+            **params: Additional params.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/sendemail/
+
+        """
+        result = self.call(
+            'SendEmail',
+            **params)
+
     def update_client_domain(
             self,
             domain,
