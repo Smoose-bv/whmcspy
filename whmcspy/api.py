@@ -202,6 +202,30 @@ class WHMCS:
             **params)
         return response
 
+    def add_transaction(
+            self,
+            paymentmethod,
+            **params):
+        """
+        Add a transaction.
+
+        Args:
+            paymentmethod (str): The payment method used to perform the
+            transaction.
+            **params: Additional params.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/addtransaction/
+
+        """
+        params.update(
+            paymentmethod=paymentmethod,
+        )
+        self.call(
+            'AddTransaction',
+            **params)
+
     def get_clients_domains(
             self,
             active=None,
