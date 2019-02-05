@@ -352,6 +352,40 @@ class WHMCS:
             **params)
         return response.get('transactions', {}).get('transaction', [])
 
+    def open_ticket(
+            self,
+            deptid,
+            subject,
+            message,
+            **params):
+        """
+        Open a support ticket
+
+        Args:
+            deptid (int): The id of the department to open the ticket for.
+            subject (str): The subject of the ticket.
+            message (str): The initial message of the ticket.
+            **params: Additional params.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/openticket/
+
+        Note:
+            Markdown doesn't seem to work when opening a ticket by using
+            the API. Maybe it's fixed in later versions of WHMCS. Consider it
+            unstable.
+
+        """
+        params.update(
+            deptid=deptid,
+            subject=subject,
+            message=message,
+        )
+        self.call(
+            'OpenTicket',
+            **params)
+
     def update_client_domain(
             self,
             domain,
