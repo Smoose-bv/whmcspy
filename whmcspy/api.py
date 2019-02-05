@@ -307,6 +307,29 @@ class WHMCS:
             invoiceid=invoiceid)
         return result
 
+    def get_tickets(
+            self,
+            **params):
+        """
+        Get support tickets.
+
+        Args:
+            **params: Additional params.
+
+        Yields:
+            The tickets.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/gettickets/
+
+        """
+        for response in self.paginated_call(
+                'GetTickets',
+                **params):
+            for ticket in response['tickets']['ticket']:
+                yield ticket
+
     def update_client_domain(
             self,
             domain,

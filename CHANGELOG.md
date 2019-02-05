@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning].
 ### Added
 - `add_transaction` method
 - `get_invoice` method
+- `get_tickets` method
 
 ### Changed
 - Removed `offset` param for paginated calls, use `limitstart` instead.
