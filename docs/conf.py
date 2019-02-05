@@ -24,7 +24,7 @@ copyright = '2019, Smoose BV'
 author = 'Smoose BV'
 
 # The short X.Y version
-version = '0.1.4'
+version = ''  # See setup.py
 # The full version, including alpha/beta/rc tags
 release = version
 

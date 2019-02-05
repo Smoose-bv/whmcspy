@@ -6,9 +6,12 @@ with open('README.md', 'r') as readme:
     long_description = readme.read()
 
 
+version = '0.1.4'
+
+
 setup(
     name='whmcspy',
-    version='0.1.4',
+    version=version,
     author='Smoose BV',
     description='Python interface to the WHMCS API.',
     url='https://github.com/Smoose-bv/whmcspy',
@@ -25,4 +28,9 @@ setup(
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Operating System :: OS Independent',
     ],
+    command_options={
+        'build_sphinx': {
+            'version': ('setup.py', version),
+        },
+    },
 )
