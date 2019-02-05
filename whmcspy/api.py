@@ -289,6 +289,24 @@ class WHMCS:
                     continue
                 yield product
 
+    def get_invoice(
+            self,
+            invoiceid):
+        """
+        Get an invoice.
+
+        Args:
+            invoiceid (int): The id of the invoice.
+
+        Returns:
+            The invoice
+
+        """
+        result = self.call(
+            'GetInvoice',
+            invoiceid=invoiceid)
+        return result
+
     def update_client_domain(
             self,
             domain,
