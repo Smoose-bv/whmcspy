@@ -330,6 +330,28 @@ class WHMCS:
             for ticket in response['tickets']['ticket']:
                 yield ticket
 
+    def get_transactions(
+            self,
+            **params):
+        """
+        Get (find) transactions.
+
+        Args:
+            **params: Additional params.
+
+        Returns:
+            A list of matching transactions.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/gettransactions/
+
+        """
+        response = self.call(
+            'GetTransactions',
+            **params)
+        return response.get('transactions', {}).get('transaction', [])
+
     def update_client_domain(
             self,
             domain,
