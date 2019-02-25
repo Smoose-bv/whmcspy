@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
+
+## [0.1.6] - 2019-02-25
 ### Added
 - `get_orders` method
 - `cancel_order` method
@@ -51,6 +53,7 @@ and this project adheres to [Semantic Versioning].
 [Keep a Changelog]: https://keepachangelog.com/en/1.0.0/
 [Semantic Versioning]: https://semver.org/spec/v2.0.0.html
 [Unreleased]: https://github.com/Smoose-bv/whmcspy
+[0.1.6]: https://github.com/Smoose-bv/whmcspy/releases/tag/0.1.6
 [0.1.5]: https://github.com/Smoose-bv/whmcspy/releases/tag/0.1.5
 [0.1.4]: https://github.com/Smoose-bv/whmcspy/releases/tag/0.1.4
 [0.1.3]: https://github.com/Smoose-bv/whmcspy/releases/tag/0.1.3
