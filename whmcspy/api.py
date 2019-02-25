@@ -249,6 +249,29 @@ class WHMCS:
             'AddTransaction',
             **params)
 
+    def cancel_order(
+            self,
+            orderid,
+            **params):
+        """
+        Cancel a pending order.
+
+        Args:
+            orderid (int): The id of the order.
+            **params: Additional params.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/cancelorder/
+
+        """
+        params.update(
+            orderid=orderid,
+        )
+        self.call(
+            'CancelOrder',
+            **params)
+
     def get_clients_domains(
             self,
             active=None,
