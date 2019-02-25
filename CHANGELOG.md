@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
+### Added
+- `get_orders` method
 
 ## [0.1.5] - 2019-02-05
 ### Added

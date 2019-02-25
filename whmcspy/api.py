@@ -121,6 +121,29 @@ class WHMCS:
             limitstart += response['numreturned']
             yield response
 
+    def get_orders(
+            self,
+            **params):
+        """
+        Get orders.
+
+        Args:
+            **params: Additional params.
+
+        Yields:
+            The matching orders.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/getorders/
+
+        """
+        for response in self.paginated_call(
+                'GetOrders',
+                **params):
+            for order in response['orders']['order']:
+                yield order
+
     def get_tld_pricing(self):
         """
         Get the TLD pricing.
