@@ -272,6 +272,24 @@ class WHMCS:
             'CancelOrder',
             **params)
 
+    def delete_order(
+            self,
+            orderid,
+            **params):
+        """
+        Delete a cancelled or fraud order.
+
+        Args:
+            orderid (int): The id of the order.
+
+        """
+        params.update(
+            orderid=orderid,
+        )
+        self.call(
+            'DeleteOrder',
+            **params)
+
     def get_clients_domains(
             self,
             active=None,

@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning].
 ### Added
 - `get_orders` method
 - `cancel_order` method
+- `delete_order` method
 
 ## [0.1.5] - 2019-02-05
 ### Added
