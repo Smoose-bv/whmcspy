@@ -450,6 +450,24 @@ class WHMCS:
             'OpenTicket',
             **params)
 
+    def pending_order(
+            self,
+            orderid,
+            **params):
+        """
+        Set an order and it's items to Pending.
+
+        Args:
+            orderid (int): The id of the order.
+
+        """
+        params.update(
+            orderid=orderid,
+        )
+        self.call(
+            'PendingOrder',
+            **params)
+
     def send_email(
             self,
             **params):
