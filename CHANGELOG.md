@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
+### Fixed
+- Processing of array params, lists are now processed properly.
 
 ## [0.1.6] - 2019-02-25
 ### Added

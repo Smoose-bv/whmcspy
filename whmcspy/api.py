@@ -48,6 +48,24 @@ class WHMCS:
         self.identifier = identifier
         self.secret = secret
 
+    def _format_array_params(self, params):
+        """
+        Format lists as array params.
+
+        A list should be formatted in a certain way (PHP-ish?) in order to be
+        processable by WHMCS.
+        The params dict is modified to contain the new params.
+
+        Args:
+            params (dict): The params to process.
+
+        """
+        for key, value in list(params.items()):
+            if isinstance(value, list):
+                for index, item in enumerate(value):
+                    params[f'{key}[{index}]'] = item
+                del params[key]
+
     def call(
             self,
             action,
@@ -77,6 +95,7 @@ class WHMCS:
             'action': action,
             'responsetype': 'json',
         }
+        self._format_array_params(params)
         payload.update(params)
         response = requests.post(
             self.url,
