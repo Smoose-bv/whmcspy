@@ -6,7 +6,7 @@ with open('README.md', 'r') as readme:
     long_description = readme.read()
 
 
-version = '0.1.6'
+version = '0.1.7'
 
 
 setup(
