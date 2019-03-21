@@ -1,4 +1,4 @@
-whmcspy reference
+WHMCSpy reference
 =================
 
 .. toctree::
