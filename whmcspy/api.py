@@ -163,6 +163,25 @@ class WHMCS:
             for order in response['orders']['order']:
                 yield order
 
+    def get_servers(
+            self,
+            **params):
+        """
+        Get servers configured in WHMCS.
+
+        Args:
+            **params: Additional params.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/getservers/
+
+        """
+        response = self.call(
+            'GetServers',
+            **params)
+        return response['servers']
+
     def get_tld_pricing(self):
         """
         Get the TLD pricing.

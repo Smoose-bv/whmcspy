@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
+### Added
+- `get_servers` method
+
 ### Fixed
 - Processing of array params, lists are now processed properly.
 
