@@ -1,12 +1,8 @@
-WHMCSpy docs
-============
+.. mdinclude:: ../README.md
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
-
-.. toctree::
-   :maxdepth: 2
+   :hidden:
 
    whmcspy
 
