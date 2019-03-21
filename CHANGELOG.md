@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning].
 ## [Unreleased]
 ### Added
 - `get_servers` method
+- `module_create` method
 
 ### Fixed
 - Processing of array params, lists are now processed properly.

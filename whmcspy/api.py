@@ -454,6 +454,21 @@ class WHMCS:
             **params)
         return response.get('transactions', {}).get('transaction', [])
 
+    def module_create(
+            self,
+            serviceid):
+        """
+        Run the module create action for a service.
+
+        Args:
+            serviceid (int): The id of the service.
+
+        """
+        result = self.call(
+            'ModuleCreate',
+            serviceid=serviceid)
+        return result
+
     def open_ticket(
             self,
             deptid,
