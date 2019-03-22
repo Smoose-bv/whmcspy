@@ -103,7 +103,7 @@ class WHMCS:
             data=payload)
         response_ = response.json()
         try:
-            response_['result']
+            result = response_['result']
         except KeyError:
             result = response_['status']
         if result == 'error':
