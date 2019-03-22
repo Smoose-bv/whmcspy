@@ -102,7 +102,11 @@ class WHMCS:
             verify=False,
             data=payload)
         response_ = response.json()
-        if response_['result'] == 'error':
+        try:
+            response_['result']
+        except KeyError:
+            result = response_['status']
+        if result == 'error':
             if response.status_code == 403:
                 raise exceptions.MissingPermission(response_['message'])
             raise exceptions.Error(response_['message'])

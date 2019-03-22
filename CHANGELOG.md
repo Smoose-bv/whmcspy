@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
+### Fixed
+- Handle error responses containing `status` instead of `result`.
 
 ## [0.1.7] - 2019-03-21
 ### Added
