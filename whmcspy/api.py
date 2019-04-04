@@ -144,6 +144,58 @@ class WHMCS:
             limitstart += response['numreturned']
             yield response
 
+    def add_client(
+            self,
+            firstname,
+            lastname,
+            email,
+            address1,
+            city,
+            state,
+            postcode,
+            country,
+            phonenumber,
+            password2,
+            **params):
+        """
+        Add client.
+
+        Args:
+            firstname (str): The client's firstname.
+            lastname (str): The client's lastname.
+            email (str): The client's email address.
+            address1 (str): The client's address.
+            city (str): The client's city.
+            state (str): The client's state.
+            postcode (str): The client's postcode.
+            country (str): 2 character ISO country code.
+            phonenumber (str): The client's phone number.
+            password2 (str): The client's password.
+            **params: Additional params.
+
+        Returns:
+            int: The id of the created client.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/addclient/
+
+        """
+        result = self.call(
+            'AddClient',
+            firstname=firstname,
+            lastname=lastname,
+            email=email,
+            address1=address1,
+            city=city,
+            state=state,
+            postcode=postcode,
+            country=country,
+            phonenumber=phonenumber,
+            password2=password2,
+            **params)
+        return result['clientid']
+
     def add_product(
             self,
             name,

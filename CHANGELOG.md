@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
+### Added
+- `add_client` method
 
 ## [0.2.0] - 2019-04-04
 ### Added
