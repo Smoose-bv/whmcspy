@@ -144,6 +144,34 @@ class WHMCS:
             limitstart += response['numreturned']
             yield response
 
+    def add_product(
+            self,
+            name,
+            gid,
+            **params):
+        """
+        Add product.
+
+        Args:
+            name (str): The name of the product.
+            gid (int): The id of the group to add the product to.
+            **params: Additional params.
+
+        Returns:
+            int: The id of the created product (pid).
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/addproduct/
+
+        """
+        result = self.call(
+            'AddProduct',
+            name=name,
+            gid=gid,
+            **params)
+        return result['pid']
+
     def get_orders(
             self,
             **params):

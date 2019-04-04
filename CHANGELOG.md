@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
+### Added
+- `add_product` method
+
 ## [0.1.9] - 2019-03-22
 ### Fixed
 - Error on successful requests.
