@@ -266,15 +266,30 @@ class WHMCS:
             **params)
         return response['servers']
 
-    def get_tld_pricing(self):
+    def get_tld_pricing(self, **params):
         """
         Get the TLD pricing.
 
         Returns:
             dict: The TLD pricing info.
 
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/gettldpricing/
+
         """
-        return self.call('GetTLDPricing')
+        return self.call('GetTLDPricing', **params)
+
+    def get_currencies(self):
+        """
+        Obtain the currencies configured in the system.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/getcurrencies/
+
+        """
+        return self.call('GetCurrencies')
 
     def accept_order(
             self,
