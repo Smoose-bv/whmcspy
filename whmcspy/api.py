@@ -691,3 +691,25 @@ class WHMCS:
             'updateClientProduct',
             **params)
         return response
+
+    def domain_whois(
+            self,
+            domain,
+            **params):
+        """
+        Get the whois information of a domain.
+
+        Args:
+            domain (str): The domain.
+            **params: Additional params.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/domainwhois/
+
+        """
+        result = self.call(
+            'DomainWhois',
+            domain=domain,
+            **params)
+        return result
