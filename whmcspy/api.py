@@ -697,7 +697,7 @@ class WHMCS:
             domain,
             **params):
         """
-        Get the whois information of a domain.
+        Get the whois information domain of a domain.
 
         Args:
             domain (str): The domain.
