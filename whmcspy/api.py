@@ -728,3 +728,23 @@ class WHMCS:
             domain=domain,
             **params)
         return result
+
+    def get_clients(
+            self,
+            **params):
+        """
+        Obtain the Clients that match passed criteria.
+
+        Args:
+            **params: Additional params.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/getclients/
+
+        """
+        for response in self.paginated_call(
+                'GetClients',
+                **params):
+            for client in response['orders']['client']:
+                yield client
