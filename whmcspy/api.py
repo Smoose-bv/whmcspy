@@ -727,6 +727,29 @@ class WHMCS:
             **params)
         return result
 
+    def domain_register(
+            self,
+            domainid=None,
+            **params):
+        """
+        Sends the Register command to the registrar for the domain.
+        Connects to the registrar and attempts to register the domain.
+
+        Args:
+            domainid (int): The id of the domain to register
+            **params: Additional params.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/domainregister/
+
+        """
+        result = self.call(
+            'DomainRegister',
+            domainid=domainid,
+            **params)
+        return result
+
     def get_clients(
             self,
             **params):
