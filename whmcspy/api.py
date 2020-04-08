@@ -351,8 +351,6 @@ class WHMCS:
             for i, domain in enumerate(domains):
                 params[f'domain[{i}]'] = domain
                 params[f'domaintype[{i}]'] = 'register'
-                params[f'domainpriceoverride[{i}]'] = 0
-                params[f'domainrenewoverride[{i}]'] = 0
         if products:
             for i, product in enumerate(products):
                 params[f'pid[{i}]'] = product['id']
