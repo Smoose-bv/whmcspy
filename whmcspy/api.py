@@ -266,15 +266,30 @@ class WHMCS:
             **params)
         return response['servers']
 
-    def get_tld_pricing(self):
+    def get_tld_pricing(self, **params):
         """
         Get the TLD pricing.
 
         Returns:
             dict: The TLD pricing info.
 
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/gettldpricing/
+
         """
-        return self.call('GetTLDPricing')
+        return self.call('GetTLDPricing', **params)
+
+    def get_currencies(self):
+        """
+        Obtain the currencies configured in the system.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/getcurrencies/
+
+        """
+        return self.call('GetCurrencies')
 
     def accept_order(
             self,
@@ -336,8 +351,6 @@ class WHMCS:
             for i, domain in enumerate(domains):
                 params[f'domain[{i}]'] = domain
                 params[f'domaintype[{i}]'] = 'register'
-                params[f'domainpriceoverride[{i}]'] = 0
-                params[f'domainrenewoverride[{i}]'] = 0
         if products:
             for i, product in enumerate(products):
                 params[f'pid[{i}]'] = product['id']
@@ -691,3 +704,68 @@ class WHMCS:
             'updateClientProduct',
             **params)
         return response
+
+    def domain_whois(
+            self,
+            domain,
+            **params):
+        """
+        Get the whois information domain of a domain.
+
+        Args:
+            domain (str): The domain.
+            **params: Additional params.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/domainwhois/
+
+        """
+        result = self.call(
+            'DomainWhois',
+            domain=domain,
+            **params)
+        return result
+
+    def domain_register(
+            self,
+            domainid=None,
+            **params):
+        """
+        Sends the Register command to the registrar for the domain.
+        Connects to the registrar and attempts to register the domain.
+
+        Args:
+            domainid (int): The id of the domain to register
+            **params: Additional params.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/domainregister/
+
+        """
+        result = self.call(
+            'DomainRegister',
+            domainid=domainid,
+            **params)
+        return result
+
+    def get_clients(
+            self,
+            **params):
+        """
+        Obtain the Clients that match passed criteria.
+
+        Args:
+            **params: Additional params.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/getclients/
+
+        """
+        for response in self.paginated_call(
+                'GetClients',
+                **params):
+            for client in response['orders']['client']:
+                yield client
