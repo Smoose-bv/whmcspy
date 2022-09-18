@@ -500,6 +500,29 @@ class WHMCS:
             invoiceid=invoiceid)
         return result
 
+    def get_invoices(
+            self,
+            **params):
+        """
+        Get invoices.
+
+        Args:
+            **params: Additional params.
+
+        Yields:
+            The matching invoices.
+
+        Hint:
+            For additional params, see the official API docs:
+            https://developers.whmcs.com/api-reference/getinvoices/
+
+        """
+        for response in self.paginated_call(
+                'GetInvoices',
+                **params):
+            for invoice in response['invoices']['invoice']:
+                yield invoice
+
     def get_tickets(
             self,
             **params):
