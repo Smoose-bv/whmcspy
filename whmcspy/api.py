@@ -35,6 +35,7 @@ class WHMCS:
             url,
             identifier,
             secret,
+            access_key="",
             secure=True):
         """
         Create a new instance.
@@ -43,15 +44,14 @@ class WHMCS:
             url (str): The URL to the WHMCS api.
             identifier (str): The identifier of the WHMCS credentials.
             secret (str): The secret of the WHMCS credentials.
+            access_key (str, optional): The access key from your WHMCS configuration. Defaults to "".
             secure (bool, optional): Whether to verify the HTTPS connection. Defaults to True.
 
         """
-
-
-
         self.url = url
         self.identifier = identifier
         self.secret = secret
+        self.access_key = access_key
         self.secure = secure
 
     def _format_array_params(self, params):
@@ -98,6 +98,7 @@ class WHMCS:
         payload = {
             'identifier': self.identifier,
             'secret': self.secret,
+            'accesskey': self.access_key,
             'action': action,
             'responsetype': 'json',
         }
