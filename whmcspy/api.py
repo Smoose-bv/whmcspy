@@ -34,7 +34,8 @@ class WHMCS:
             self,
             url,
             identifier,
-            secret):
+            secret,
+            secure=True):
         """
         Create a new instance.
 
@@ -42,11 +43,16 @@ class WHMCS:
             url (str): The URL to the WHMCS api.
             identifier (str): The identifier of the WHMCS credentials.
             secret (str): The secret of the WHMCS credentials.
+            secure (bool, optional): Whether to verify the HTTPS connection. Defaults to True.
 
         """
+
+
+
         self.url = url
         self.identifier = identifier
         self.secret = secret
+        self.secure = secure
 
     def _format_array_params(self, params):
         """
@@ -99,7 +105,7 @@ class WHMCS:
         payload.update(params)
         response = requests.post(
             self.url,
-            verify=False,
+            verify=self.secure,
             data=payload)
         response_ = response.json()
         try:
